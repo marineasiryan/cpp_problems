@@ -1,0 +1,44 @@
+#include <iostream>
+
+using namespace std;
+
+struct Struct_type {
+  string type_name;
+  void* ptr;
+};
+
+int main()
+{
+  string str[3] = {"integer", "boolean", "char"};
+
+  int i = 11;
+  bool b = false;
+  char c = 'a';
+  
+  struct  Struct_type arr[3];
+
+  arr[0].type_name = str[0];
+  arr[0].ptr = malloc(sizeof(int));
+  arr[0].ptr = &i;
+
+  arr[1].type_name = str[1];
+  arr[1].ptr = malloc(sizeof(bool));
+  arr[1].ptr = &b;
+
+  arr[2].type_name = str[2];
+  arr[2].ptr = malloc(sizeof(char));
+  arr[2].ptr = &c;
+
+  for(int i = 0; i < 3; i++){
+    if(arr[i].type_name == "integer"){
+      cout << *((int*)arr[i].ptr);
+    }
+    if(arr[i].type_name == "boolean"){
+      cout << *((bool*)arr[i].ptr);
+    }
+    if(arr[i].type_name == "char"){
+      cout << *((char*)arr[i].ptr);
+    }
+  }
+  return 0;
+}
